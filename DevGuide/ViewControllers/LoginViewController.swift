@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     
     private let user = User.getUserData()
+    private let languages = Language.getLanguagesInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        performSegue(withIdentifier: "1234", sender: nil)
+        performSegue(withIdentifier: "tabBar", sender: nil)
     }
     
     @IBAction func fogotUserData(_ sender: UIButton) {
@@ -34,15 +35,14 @@ class LoginViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navigationVC = segue.destination as? UINavigationController else { return }
-        guard let tabBarVC = navigationVC.topViewController as? UITabBarController else { return }
+        guard let tabBarVC = segue.destination as? UITabBarController else { return }
         guard let viewControllers = tabBarVC.viewControllers else { return }
         
         viewControllers.forEach { viewController in
-            if let languagesVC = viewController as? LanguagesTableViewController {
-                languagesVC.view.backgroundColor = .systemBlue
-            } else if let mentorsVC = viewController as? MentorsTableViewController {
-                mentorsVC.view.backgroundColor = .systemGreen
+            if let navigationVC = viewController as? UINavigationController {
+                if let languagesVC = navigationVC.topViewController as? LanguagesTableViewController {
+                    languagesVC.languages = languages
+                }
             }
         }
     }
