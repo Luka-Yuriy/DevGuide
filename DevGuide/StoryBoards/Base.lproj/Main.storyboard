@@ -129,7 +129,7 @@
         <!--Root View Controller-->
         <scene sceneID="aal-RS-xy2">
             <objects>
-                <tableViewController id="rN6-VB-CjN" customClass="ProgrammingLanguagesTableViewController" customModule="DevGuide" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="rN6-VB-CjN" customClass="LanguagesTableViewController" customModule="DevGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="W6E-iL-rbV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,8 +160,8 @@
         <scene sceneID="W0k-8T-55m">
             <objects>
                 <navigationController id="LQt-l0-uol" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JKY-z1-bdA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="JKY-z1-bdA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

@@ -33,6 +33,20 @@ class LoginViewController: UIViewController {
         : showAlert(title: "Your password is:", message: "\(user.password)")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navigationVC = segue.destination as? UINavigationController else { return }
+        guard let tabBarVC = navigationVC.topViewController as? UITabBarController else { return }
+        guard let viewControllers = tabBarVC.viewControllers else { return }
+        
+        viewControllers.forEach { viewController in
+            if let languagesVC = viewController as? LanguagesTableViewController {
+                languagesVC.view.backgroundColor = .systemBlue
+            } else if let mentorsVC = viewController as? MentorsTableViewController {
+                mentorsVC.view.backgroundColor = .systemGreen
+            }
+        }
+    }
+    
     private func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
