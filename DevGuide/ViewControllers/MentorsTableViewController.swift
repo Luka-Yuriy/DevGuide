@@ -9,7 +9,7 @@ import UIKit
 
 class MentorsTableViewController: UITableViewController {
     
-    let mentors = Mentor.getMentorIngo()
+    private let mentors = Mentor.getMentorIngo()
     
     override func viewDidLoad() {
         super.viewDidLoad()

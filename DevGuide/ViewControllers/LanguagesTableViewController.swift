@@ -46,4 +46,8 @@ class LanguagesTableViewController: UITableViewController {
         let detailsVC = segue.destination as? DetailsViewController
         detailsVC?.language = sender as? Language
     }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        
+    }
 }

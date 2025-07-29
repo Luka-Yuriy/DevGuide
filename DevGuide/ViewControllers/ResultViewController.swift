@@ -8,22 +8,35 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
+    
+    @IBOutlet var languageLable: UILabel!
+    @IBOutlet var languageDescriptionLabel: UILabel!
+    
+    var answers: [Answer]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+    }
+}
 
-        // Do any additional setup after loading the view.
+extension ResultViewController {
+    private func updateResult() {
+        var frequencyOfLanguages: [ProgrammingLanguage: Int] = [:]
+        let languages = answers.map { $0.language }
+        
+        for language in languages {
+            frequencyOfLanguages[language, default: 0] += 1
+        }
+        
+        let sortedFrequencyOfLanguages = frequencyOfLanguages.sorted { $0.value > $1.value }
+        guard let mostFrequentLanguage = sortedFrequencyOfLanguages.first?.key else { return }
+        
+        undateUI(with: mostFrequentLanguage)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func undateUI(with language: ProgrammingLanguage) {
+        languageLable.text = language.rawValue
+        languageDescriptionLabel.text = language.definition
     }
-    */
-
 }

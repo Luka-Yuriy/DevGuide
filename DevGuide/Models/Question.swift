@@ -7,12 +7,14 @@
 
 struct Question {
     let title: String
+    let responseNumber: ResponseNumber
     let answer: [Answer]
     
     static func getQuestions() -> [Question] {
         [
             Question(
                 title: "What type of projects are you most interested in?",
+                responseNumber: .first,
                 answer: [
                     Answer(title: "Developing games", language: .cSharp),
                     Answer(title: "Scientific computing and analytics", language: .python),
@@ -22,28 +24,39 @@ struct Question {
             ),
             Question(
                 title: "How important is cross-platform compatibility to you?",
+                responseNumber: .second,
                 answer: [
-                    Answer(title: "Very important, I want to write once and run on all devices", language: .cSharp),
-                    Answer(title: "Not very important, I can write separately for each platform", language: .javaScript)
+                    Answer(title: "Very important", language: .cSharp),
+                    Answer(title: "Not very important", language: .javaScript)
                 ]
             ),
             Question(
                 title: "How much complexity are you willing to handle?",
+                responseNumber: .third,
                 answer: [
-                    Answer(title: " Prefer simple and understandable languages", language: .swift),
-                    Answer(title: "Ready to learn complex concepts and languages with rich functionality", language: .cSharp)
+                    Answer(title: " Prefer simple languages", language: .swift),
+                    Answer(title: "Ready to learn complex  languages", language: .cSharp)
                 ]
             ),
             Question(
                 title: "What tools or development environments do you prefer?",
+                responseNumber: .fourth,
                 answer: [
                     Answer(title: "Visual Studio, Visual Studio Code", language: .python),
                     Answer(title: "Unity", language: .cSharp),
                     Answer(title: "Web browsers and server platforms", language: .javaScript),
                     Answer(title: "Specialized IDEs for mobile development", language: .swift)
-                ])
+                ]
+            )
         ]
     }
+}
+
+enum ResponseNumber {
+    case first
+    case second
+    case third
+    case fourth
 }
 
 struct Answer {
